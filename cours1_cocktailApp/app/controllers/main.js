@@ -6,7 +6,7 @@ button.classList.add('btn-primary');
 button.textContent = "Click me!";
 
 const getIngredients = (drink) => {
-    ingredients = [];
+    let ingredients = [];
     for (const key in drink) {
         if (key.includes('strIngredient') && drink[key]) {
             ingredients.push(drink[key]);
@@ -16,7 +16,7 @@ const getIngredients = (drink) => {
 }
 
 const createCocktailCardContent = (image, name, subtitle, description, ingredients) => {
-    ingredientsList = `<ol class="list-group list-group-numbered">`
+    let ingredientsList = `<ol class="list-group list-group-numbered">`
     for (const ingredient of ingredients) {
         ingredientsList += `<li class="list-group-item">${ingredient}</li>`
     }
