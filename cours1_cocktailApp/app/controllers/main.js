@@ -56,16 +56,16 @@ const getRadomCocktailInfo = async () => {
 
 const createRandomCocktailCard = async () => {
     try {
-        randomCocktail = await getRadomCocktailInfo();
+        cocktailInfo = await getRadomCocktailInfo();
         cardContent = createCocktailCardContent(
-            randomCocktail.strDrinkThumb,
-            randomCocktail.strDrink,
-            randomCocktail.strCategory,
-            randomCocktail.strInstructions,
-            getIngredients(randomCocktail));
-        if (document.querySelector('.cocktailDiv')) {
-            card = document.querySelector('.cocktailDiv');
-            card.innerHTML = cardContent;
+            cocktailInfo.strDrinkThumb,
+            cocktailInfo.strDrink,
+            cocktailInfo.strCategory,
+            cocktailInfo.strInstructions,
+            getIngredients(cocktailInfo));
+        const cocktailCard = document.querySelector('.cocktailDiv');
+        if (cocktailCard) {
+            cocktailCard.innerHTML = cardContent;
             return;
         }
         div = document.createElement('div');
