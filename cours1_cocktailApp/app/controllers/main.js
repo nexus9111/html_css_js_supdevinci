@@ -1,15 +1,18 @@
 const root = document.getElementById('root');
 
-const createButton = () => {
-    const button = document.createElement('button');
-    button.classList.add('btn');
-    button.classList.add('btn-primary');
-    button.textContent = "Click me!";
-    root.appendChild(button);
-    return button;
-}
+const createElement = (type, classes, text = '') => {
+    const element = document.createElement(type);
+    for (const className of classes) {
+        element.classList.add(className);
+    }
+    if (text !== '') {
+        element.textContent = text;
+    }
+    root.appendChild(element);
+    return element;
+} 
 
-const button = createButton();
+const button = createElement('button', ['btn', 'btn-primary'], 'Click me!');
 
 const getIngredients = (drink) => {
     let ingredients = [];
@@ -54,6 +57,8 @@ const getRadomCocktailInfo = async () => {
     }
 }
 
+
+
 const createRandomCocktailCard = async () => {
     try {
         cocktailInfo = await getRadomCocktailInfo();
@@ -68,8 +73,7 @@ const createRandomCocktailCard = async () => {
             cocktailCard.innerHTML = cardContent;
             return;
         }
-        div = document.createElement('div');
-        div.classList.add('cocktailDiv');
+        div = createElement('div', ['cocktailDiv']);
         div.innerHTML = cardContent;
         root.appendChild(div);
     } catch (error) {
