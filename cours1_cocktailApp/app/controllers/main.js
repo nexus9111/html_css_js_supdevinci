@@ -15,13 +15,12 @@ const getIngredients = (drink) => {
     return ingredients;
 }
 
-const createCocktailCardContent = (image, name, subtitle, description, ingredientsList) => {
-
-    ingredients = `<ol class="list-group list-group-numbered">`
-    for (const ingredient of ingredientsList) {
-        ingredients += `<li class="list-group-item">${ingredient}</li>`
+const createCocktailCardContent = (image, name, subtitle, description, ingredients) => {
+    ingredientsList = `<ol class="list-group list-group-numbered">`
+    for (const ingredient of ingredients) {
+        ingredientsList += `<li class="list-group-item">${ingredient}</li>`
     }
-    ingredients += `</ol>`
+    ingredientsList += `</ol>`
 
     return `
     <div class="card" style="width: 18rem;">
@@ -30,7 +29,7 @@ const createCocktailCardContent = (image, name, subtitle, description, ingredien
             <h5 class="card-title">${name}</h5>
             <h6 class="card-subtitle mb-2 text-muted">${subtitle}</h6>
             <p>${description}</p>
-            ${ingredients}
+            ${ingredientsList}
         </div>
     </div>`;
 }
