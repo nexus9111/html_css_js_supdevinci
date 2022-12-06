@@ -1,9 +1,15 @@
 const root = document.getElementById('root');
 
-const button = document.createElement('button');
-button.classList.add('btn');
-button.classList.add('btn-primary');
-button.textContent = "Click me!";
+const createButton = () => {
+    const button = document.createElement('button');
+    button.classList.add('btn');
+    button.classList.add('btn-primary');
+    button.textContent = "Click me!";
+    root.appendChild(button);
+    return button;
+}
+
+const button = createButton();
 
 const getIngredients = (drink) => {
     let ingredients = [];
@@ -73,4 +79,3 @@ const createRandomCocktailCard = async () => {
 
 button.addEventListener('click', createRandomCocktailCard);
 
-root.appendChild(button);
