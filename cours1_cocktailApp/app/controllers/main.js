@@ -2,9 +2,7 @@ const root = document.getElementById('root');
 
 const createElement = (type, classes, text = '') => {
     const element = document.createElement(type);
-    for (const className of classes) {
-        element.classList.add(className);
-    }
+    element.classList.add(...classes);
     if (text !== '') {
         element.textContent = text;
     }
