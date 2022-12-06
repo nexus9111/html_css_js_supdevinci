@@ -5,7 +5,7 @@ button.classList.add('btn');
 button.classList.add('btn-primary');
 button.textContent = "Click me!";
 
-createCocktailCardContent = (image, name, subtitle, description) => {
+const createCocktailCardContent = (image, name, subtitle, description) => {
     return `
     <div class="card" style="width: 18rem;">
         <img src="${image}" class="card-img-top" alt="${name}">
@@ -17,25 +17,23 @@ createCocktailCardContent = (image, name, subtitle, description) => {
     </div>`;
 }
 
-getRadomCocktailInfo = async () => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-            const data = await response.json();
-            randomCocktail = data.drinks[0];
-            return resolve(randomCocktail);
-        } catch (error) {
-            return reject("Error while fetching data");
-        }
-    });
+const getRadomCocktailInfo = async () => {
+    try {
+        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+        const data = await response.json();
+        randomCocktail = data.drinks[0];
+        return randomCocktail;
+    } catch (error) {
+        throw new Error("An error occured while fetching the cocktail data");
+    }
 }
 
-createRandomCocktailCard = async () => {
+const createRandomCocktailCard = async () => {
     try {
         randomCocktail = await getRadomCocktailInfo();
         cardContent = createCocktailCardContent(
-            randomCocktail.strDrinkThumb, 
-            randomCocktail.strDrink, 
+            randomCocktail.strDrinkThumb,
+            randomCocktail.strDrink,
             randomCocktail.strCategory,
             randomCocktail.strInstructions);
         if (document.querySelector('.cocktailDiv')) {
