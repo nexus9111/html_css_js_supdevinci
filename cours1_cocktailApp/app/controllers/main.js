@@ -12,6 +12,8 @@ const getIngredients = (drink) => {
             ingredients.push(drink[key]);
         }
     }
+    // make all ingredients unique
+    ingredients = [...new Set(ingredients)];
     return ingredients;
 }
 
